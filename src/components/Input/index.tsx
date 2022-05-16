@@ -1,17 +1,19 @@
-import React from "react";
+import React, { InputHTMLAttributes } from "react";
 
-import { Input } from './styles';
+import { Input, InputContainer, InputLabel } from './styles';
 
-interface InputProps {
-  children?: React.ReactNode;
-  placeHolder: string;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  width: string;
+  labelText: string;
+  updateValue: (value: string) => void;
 }
 
-const MyInput = ({...props}: InputProps) => {
+const MyInput = ({updateValue, labelText, width,...props}: InputProps) => {
   return (
-    <Input placeholder={props.placeHolder}>
-      {props.children}
-    </Input>
+    <InputContainer>
+      <InputLabel>{labelText}</InputLabel>
+      <Input onChange={(e) => updateValue(e.target.value)} width={width} {...props} />
+    </InputContainer>
   )
 }
 export default MyInput;

@@ -1,14 +1,45 @@
 [
   {
-    "id": "123",
+    "matricula": "123",
     "nome": "Felipe",
     "senha": "123456",
-    "role": "Coordenador" 
+    "role": "Coordenador",
+    "solicitacoes": [
+      {
+        "id": "9435",
+        "matriculaAluno": "123456",
+        "nomeAluno": "João Pedro Piovesan",
+        "disciplinaDesejada": "Sistemas Embarcados",
+        "mediaMateria": "6.5",
+        "email": "verdantxd@gmail.com",
+        "aprovada": false
+      },
+      {
+        "id": "6424",
+        "matriculaAluno": "03294",
+        "nomeAluno": "Rafael Andreola",
+        "disciplinaDesejada": "Outra disciplina do felipe",
+        "mediaMateria": "8.5",
+        "email": "rafael@gmail.com",
+        "aprovada": true
+      }
+    ] 
   },
   {
-    "id": "456",
+    "matricula": "456",
     "nome": "Vasco",
     "senha": "456789",
-    "role": "Professor" 
+    "role": "Professor",
+    "solicitacoes": [
+      {
+        "id": "35124",
+        "matriculaAluno": "43256",
+        "nomeAluno": "João Manoel",
+        "disciplinaDesejada": "Criptografia e Redes",
+        "mediaMateria": "9.5",
+        "email": "joaomanoel@gmail.com",
+        "aprovada": true
+      }
+    ]
   }
 ]
