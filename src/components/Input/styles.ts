@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const InputContainer = styled.div`
   width: 80%;
   text-align: left;
-  margin: auto;
+  margin: 0 auto;
   margin-bottom: 1.4rem;
 `
 

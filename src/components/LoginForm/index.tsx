@@ -21,9 +21,9 @@ const LoginForm = () => {
 
   return (
     <FormContainer>
-      <MyInput updateValue={updateMatricula} labelText="Matrícula" width="100%" placeholder="Entre com sua matricula" />
-      <MyInput updateValue={updateSenha} labelText="Senha" width="100%" placeholder="Entre com sua senha" />
-      <MyButton onClick={() => handleLogIn()}>Entrar</MyButton>
+      <MyInput updateValue={updateMatricula} labelText="Matrícula" width="19rem" placeholder="Entre com sua matricula" />
+      <MyInput updateValue={updateSenha} labelText="Senha" width="19rem" placeholder="Entre com sua senha" />
+      <MyButton style={{marginTop: '1rem', borderRadius: 5}} width="12rem" textColor="#2f6195" bgColor="white"  onClick={() => handleLogIn()}>Entrar</MyButton>
     </FormContainer>
   )
 }

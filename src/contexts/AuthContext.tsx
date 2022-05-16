@@ -1,10 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { User } from "../utils/types";
 import data from '../../data.json';
+import { useRouter } from "next/router";
 
 type AuthContextType = {
   user: User | undefined;
   logIn: (matricula: string, senha: string) => string;
+  logOut: () => void;
 }
 
 type AuthContextProviderPros = {
@@ -15,6 +17,7 @@ export const AuthContext = createContext({} as AuthContextType)
 
 const AuthContextProvider = (props: AuthContextProviderPros) => {
   const [ user, setUser ] = useState<User>();
+  const router = useRouter();
 
   const logIn = (matricula: string, senha: string) => {
     let role = '';
@@ -27,8 +30,12 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
     return role;
   }
 
+  const logOut = () => {
+    router.push('/')
+  }
+
   return (
-    <AuthContext.Provider value={{user, logIn}}>
+    <AuthContext.Provider value={{user, logIn, logOut}}>
       {props.children}
     </AuthContext.Provider>
   )

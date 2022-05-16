@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import SolicitacoesLista from "../../components/DashProf/ListaSolicitacoes";
+import SolicitacoesLista from "../../components/ListaSolicitacoes";
+import LogoutButton from "../../components/LogutButton";
 import { useAuth } from "../../contexts/AuthContext"
 import { Solicitacao } from "../../utils/types";
 import { Container, Title } from "./styles"
@@ -14,6 +15,7 @@ const DashProf = () => {
 
   return (
     <Container>
+      <LogoutButton />
       <Title>Solicitações</Title>
       {solicitacoes 
         ? <SolicitacoesLista solicitacoes={solicitacoes}/>

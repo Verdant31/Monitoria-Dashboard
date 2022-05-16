@@ -1,4 +1,5 @@
 //Components
+import Image from "next/image";
 import { useRouter } from "next/router";
 import MyButton from "../components/Button";
 import LoginForm from "../components/LoginForm";
@@ -10,7 +11,7 @@ const Home = () => {
   return (
     <Container>
       <LogInContainer>
-        <Logo src={"/logo.svg"} />
+        <Image src="/logo.svg" width={400} height={150} alt="hehe" />
         <LoginForm />
       </LogInContainer>
     </Container>

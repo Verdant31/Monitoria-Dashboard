@@ -1,4 +1,4 @@
-import { Solicitacao } from "../../../utils/types";
+import { Solicitacao } from "../../utils/types";
 import CardSolicitacao from "../CardSolicitacao";
 import { Container } from "./styles";
 

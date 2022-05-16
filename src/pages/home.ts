@@ -15,7 +15,7 @@ export const Logo = styled.img`
   height: 8rem;
 `
 export const LogInContainer = styled.div`
-  width: 25rem;
+  width: 26rem;
   text-align: center;
 `
 
