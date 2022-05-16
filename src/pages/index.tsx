@@ -1,19 +1,19 @@
 //Components
 import { useRouter } from "next/router";
 import MyButton from "../components/Button";
+import LoginForm from "../components/LoginForm";
 //Styles
-import { LogInContainer,  ButtonsContainer, Logo } from "./home";
+import { Container, LogInContainer, Logo } from "./home";
 
 const Home = () => {
   const router = useRouter();
   return (
-    <LogInContainer>
-      <Logo src={"/uplogo.png"} />
-      <ButtonsContainer>
-        <MyButton onClick={() => router.push('DashCord')}>Professor</MyButton>
-        <MyButton onClick={() => router.push('DashProf')}>Coordenador</MyButton>
-      </ButtonsContainer>
-    </LogInContainer>
+    <Container>
+      <LogInContainer>
+        <Logo src={"/logo.svg"} />
+        <LoginForm />
+      </LogInContainer>
+    </Container>
   )
 }
 

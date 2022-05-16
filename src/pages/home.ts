@@ -11,25 +11,12 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 25rem;
-  height: 12.5rem;
+  width: 22rem;
+  height: 8rem;
 `
 export const LogInContainer = styled.div`
-  display: flex;
-
-  width: 100vw;
-  height: 100vh;
-  
-  justify-content: center;
-  align-items: center;
-  
-  gap: 3rem;
+  width: 25rem;
+  text-align: center;
 `
 
-export const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  
-  align-items: center;
-  gap: 2rem;
-`
+
