@@ -14,7 +14,7 @@ export const Title = styled.h1`
 `
 export const MainContainer = styled.div`
   width: ${width}px;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   right:0;
 `
