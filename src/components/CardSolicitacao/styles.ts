@@ -9,6 +9,8 @@ export const CardContainer = styled.div`
 `
 
 export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 40px;
   width: 100%;
   margin-top: 1.2rem;
 `

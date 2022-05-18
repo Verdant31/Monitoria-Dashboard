@@ -16,5 +16,5 @@ export const OptionsContainer = styled.div`
 
   margin-top: 2rem;
 
-  gap: 50px;
+  gap: 30px;
 `

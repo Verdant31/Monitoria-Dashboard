@@ -1,3 +1,4 @@
+import { useAuth } from "../../contexts/AuthContext";
 import { Solicitacao } from "../../utils/types";
 import CardSolicitacao from "../CardSolicitacao";
 import { Container } from "./styles";
@@ -7,10 +8,14 @@ interface ListaSolicitacoes {
 }
 
 const ListaSolicitacoes = ({solicitacoes}: ListaSolicitacoes) => {
+  const { user } = useAuth();
   return (
     <Container>
       {solicitacoes.map((solicitacao) => {
-        if(solicitacao.aprovada) {
+        if(user?.role === 'Coordenador') {
+          if(solicitacao.aprovada === false) 
+            return <CardSolicitacao key={solicitacao.id} solicitacao={solicitacao} />
+        }else {
           return <CardSolicitacao key={solicitacao.id} solicitacao={solicitacao} />
         }
       })}

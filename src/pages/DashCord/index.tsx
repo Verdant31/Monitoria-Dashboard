@@ -4,14 +4,11 @@ import SideBar from "../../components/SideBar";
 import { useAuth } from "../../contexts/AuthContext"
 import { Solicitacao } from "../../utils/types";
 import { Container, MainContainer, Title } from "./styles"
+import data from '../../../solicitacoes.json';
 
 const DashProf = () => {
-  const [ solicitacoes, setSolicitacoes ] = useState<Solicitacao[]>()
+  const [ solicitacoes, setSolicitacoes ] = useState<Solicitacao[]>([])
   const { user } = useAuth();
-
-  useEffect(() => {
-    if(user?.solicitacoes) setSolicitacoes(user.solicitacoes)
-  },[])
 
   return (
     <Container>
@@ -19,7 +16,7 @@ const DashProf = () => {
       <MainContainer>
         <Title>Solicitações</Title>
         {solicitacoes 
-          ? <SolicitacoesLista solicitacoes={solicitacoes}/>
+          ? <SolicitacoesLista solicitacoes={data}/>
           : <h1>Você não tem solicitações no momento.</h1>
         }
       </MainContainer>
