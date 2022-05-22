@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-const width = window.innerWidth - 96;
-
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -16,8 +14,7 @@ export const Title = styled.h1`
 `
 
 export const MainContainer = styled.div`
-  width: ${width}px;
-  height: 100vh;
+  width: 100vw;
+  padding-top: 3rem;
   position: absolute;
-  right:0;
 `

@@ -3,15 +3,13 @@ import ListaMonitores from "../../../components/ListaMonitores";
 import LogoutButton from "../../../components/LogutButton";
 import SearchBar from "../../../components/SearchBar";
 import SideBar from "../../../components/SideBar";
-import { Container, MainContainer, Title} from "./styles";
+import { Container, MainContainer } from "./styles";
 
 const MeusMonitores = () => {
   return (
     <>
-      <SideBar />
-      <LogoutButton />
+      <SideBar title="Meus Monitores"/>
       <MainContainer>
-        <Title>Meus Monitores</Title>
         <SearchBar />
         <ListaMonitores />
       </MainContainer>  

@@ -1,5 +1,5 @@
 import monitores from '../../../monitores.json';
-import { DisciplinaContainer, DisciplinaTitulo } from './styles';
+import {  DisciplinaContainer, DisciplinaTitulo } from './styles';
 
 const ListaMonitores = () => {
 

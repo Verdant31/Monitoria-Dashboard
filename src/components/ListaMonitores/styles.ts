@@ -8,5 +8,4 @@ export const DisciplinaContainer = styled.div`
 
 export const DisciplinaTitulo = styled.p`
   font-size: 2rem;
-  
 `

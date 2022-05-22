@@ -7,10 +7,8 @@ import { Container, MainContainer, Title} from "./styles";
 const AlunosAprovados = () => {
   return (
     <>
-      <SideBar />
-      <LogoutButton />
+      <SideBar title="Alunos Pendentes" />
       <MainContainer>
-        <Title>Alunos Pendentes</Title>
         <SearchBar />
         <ListaAlunosPendentes />
       </MainContainer>  

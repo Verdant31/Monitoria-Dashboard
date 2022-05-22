@@ -1,20 +1,25 @@
 import styled from "styled-components";
 
 export const SideBarContainer = styled.div`
-  position: absolute;
-  width: 6rem;
-  height: 100vh;
-  background-color: #2f6195;
+  display: flex;
+  width: 100vw;
+  padding-top: 2rem;
 `
 
-export const OptionsContainer = styled.div`
+export const Title = styled.h1`
+  text-align: center;
+  margin: auto;
+`
+export const IconsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  
   width: 100%;
+  gap: 40px;
+  position: absolute;
+  left: 40px;
+`
 
-  margin-top: 2rem;
-
-  gap: 30px;
+export const LogoutBtnContainer = styled.div`
+  display: flex;
+  position: absolute;
+  right: 40px;
 `

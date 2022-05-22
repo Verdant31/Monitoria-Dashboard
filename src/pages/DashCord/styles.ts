@@ -13,8 +13,7 @@ export const Title = styled.h1`
   padding-top: 2rem;
 `
 export const MainContainer = styled.div`
-  width: ${width}px;
-  height: 100%;
+  width: 100vw;
+  padding-top: 4rem;
   position: absolute;
-  right:0;
 `
