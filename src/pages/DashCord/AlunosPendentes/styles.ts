@@ -8,6 +8,13 @@ export const Container = styled.div`
   position: relative;
 `
 
+export const Title = styled.h1`
+  width: 25rem;
+  margin: auto;
+  text-align: center;
+  padding-top: 2rem;
+`
+
 export const MainContainer = styled.div`
   width: ${width}px;
   height: 100vh;

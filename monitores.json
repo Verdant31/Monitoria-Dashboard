@@ -1,0 +1,34 @@
+[
+  {
+    "codDisciplina": "1234",
+    "nomeDisciplina": "Redes e Criptografia",
+    "monitores": [
+      {
+        "idMonitor": "123",
+        "nomeMonitor": "João Pedro Piovesan",
+        "email": "verdantxd@gmail.com"
+      },
+      {
+        "idMonitor": "14423",
+        "nomeMonitor": "Rafael Andreola",
+        "email": "rafael.a@gmail.com"
+      }
+    ]
+  },
+  {
+    "codDisciplina": "444423",
+    "nomeDisciplina": "Embarcados",
+    "monitores": [
+      {
+        "idMonitor": "4323",
+        "nomeMonitor": "João Manoel",
+        "email": "joaomanoel@gmail.com"
+      },
+      {
+        "idMonitor": "85635",
+        "nomeMonitor": "Haissam",
+        "email": "haissam.m@gmail.com"
+      }
+    ]
+  }
+]

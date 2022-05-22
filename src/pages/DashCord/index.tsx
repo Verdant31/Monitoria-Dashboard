@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
 import SolicitacoesLista from "../../components/ListaSolicitacoes";
 import SideBar from "../../components/SideBar";
-import { useAuth } from "../../contexts/AuthContext"
-import { Solicitacao } from "../../utils/types";
 import { Container, MainContainer, Title } from "./styles"
 import data from '../../../solicitacoes.json';
+import LogoutButton from "../../components/LogutButton";
 
 const DashProf = () => {
-  const [ solicitacoes, setSolicitacoes ] = useState<Solicitacao[]>([])
-  const { user } = useAuth();
 
   return (
     <Container>
+      <LogoutButton />
       <SideBar />
       <MainContainer>
-        <Title>Solicitações</Title>
-        {solicitacoes 
+        <Title>Solicitações da Coordenação</Title>
+        {data 
           ? <SolicitacoesLista solicitacoes={data}/>
           : <h1>Você não tem solicitações no momento.</h1>
         }

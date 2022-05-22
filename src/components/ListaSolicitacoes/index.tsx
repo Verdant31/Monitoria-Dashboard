@@ -16,7 +16,8 @@ const ListaSolicitacoes = ({solicitacoes}: ListaSolicitacoes) => {
           if(solicitacao.aprovada === false) 
             return <CardSolicitacao key={solicitacao.id} solicitacao={solicitacao} />
         }else {
-          return <CardSolicitacao key={solicitacao.id} solicitacao={solicitacao} />
+          if(solicitacao.matriculaProfessor === user?.matricula)
+            return <CardSolicitacao key={solicitacao.id} solicitacao={solicitacao} />
         }
       })}
     </Container>

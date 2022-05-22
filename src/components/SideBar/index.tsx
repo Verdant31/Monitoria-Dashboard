@@ -16,8 +16,8 @@ const SideBar = () => {
       ? router.push('/DashCord') 
       : router.push('/DashProf')
     if(path === 'Alunos') user?.role==="Coordenador" 
-      ? router.push('DashCord/AlunosAprovados') 
-      : router.push('DashProf/Mosnitores')
+      ? router.push('DashCord/AlunosPendentes') 
+      : router.push('DashProf/MeusMonitores')
   }
 
   return (
@@ -28,9 +28,6 @@ const SideBar = () => {
         </IconButton>
         <IconButton onClick={() => handleRedirect('Alunos')}>
           <LibraryBooksIcon fontSize="large" sx={{color: '#f2f2f2'}} />
-        </IconButton>
-        <IconButton style={{position: 'absolute', bottom: 40}} onClick={() => router.push('/')}>
-          <Logout fontSize="large" sx={{color: '#f2f2f2'}} />
         </IconButton>
       </OptionsContainer>
     </SideBarContainer>

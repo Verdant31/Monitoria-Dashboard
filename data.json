@@ -9,17 +9,6 @@
     "matricula": "456",
     "nome": "Vasco",
     "senha": "456789",
-    "role": "Professor",
-    "solicitacoes": [
-      {
-        "id": "35124",
-        "matriculaAluno": "43256",
-        "nomeAluno": "João Manoel",
-        "disciplinaDesejada": "Criptografia e Redes",
-        "mediaMateria": "9.5",
-        "email": "joaomanoel@gmail.com",
-        "aprovada": true
-      }
-    ]
+    "role": "Professor"
   }
 ]
