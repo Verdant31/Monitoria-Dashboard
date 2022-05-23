@@ -21,3 +21,8 @@ export type Monitoria = {
   professorDisciplina: string;
   solicitacoes: Solicitacao[];
 }
+export type MonitorCard = {
+  idMonitor: string;
+  nomeMonitor: string;
+  email: string;
+}

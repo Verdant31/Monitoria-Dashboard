@@ -1,18 +1,24 @@
-import monitores from '../../../monitores.json';
-import {  DisciplinaContainer, DisciplinaTitulo } from './styles';
+import monitorias from '../../../monitores.json';
+import CardMonitor from '../CardMonitor';
+import {  MonitoresContainer, DisciplinaContainer, DisciplinaTitulo, Container, MonitorCard} from './styles';
 
 const ListaMonitores = () => {
 
   return (
-    <>
-      {monitores.map((monitor) => {
+    <Container>
+      {monitorias.map((monitoria) => {
         return (
-          <DisciplinaContainer key={monitor.codDisciplina}>
-            <DisciplinaTitulo>Hehe</DisciplinaTitulo>
+          <DisciplinaContainer key={monitoria.codDisciplina}>
+            <DisciplinaTitulo>{monitoria.nomeDisciplina}</DisciplinaTitulo>
+            <MonitoresContainer>
+              {monitoria.monitores.map((monitor) => {
+                return <CardMonitor monitor={monitor} key={monitor.idMonitor}/>
+              })}
+            </MonitoresContainer>
           </DisciplinaContainer>
         )
       })}
-    </>
+    </Container>
   )
 }
 export default ListaMonitores;

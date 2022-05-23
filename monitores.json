@@ -12,6 +12,11 @@
         "idMonitor": "14423",
         "nomeMonitor": "Rafael Andreola",
         "email": "rafael.a@gmail.com"
+      },
+      {
+        "idMonitor": "5564",
+        "nomeMonitor": "Andreola",
+        "email": "andreola.a@gmail.com"
       }
     ]
   },
@@ -23,6 +28,22 @@
         "idMonitor": "4323",
         "nomeMonitor": "João Manoel",
         "email": "joaomanoel@gmail.com"
+      },
+      {
+        "idMonitor": "85635",
+        "nomeMonitor": "Haissam",
+        "email": "haissam.m@gmail.com"
+      }
+    ]
+  },
+  {
+    "codDisciplina": "455344",
+    "nomeDisciplina": "Topicos",
+    "monitores": [
+      {
+        "idMonitor": "461237",
+        "nomeMonitor": "Manoel",
+        "email": "manoel@gmail.com"
       },
       {
         "idMonitor": "85635",
