@@ -1,17 +1,16 @@
 import type { AppProps } from 'next/app'
-import LogoutButton from '../components/LogutButton';
-import SideBar from '../components/SideBar';
 import AuthContextProvider from '../contexts/AuthContext';
-import useWindowDimensions from '../hooks/useWindowDimensions';
-
+import RequisitosContextProvider from '../contexts/RequisitosContext';
 import GlobalStyle from './global';
 
 const MyApp = ({Component, pageProps}: AppProps) => {
   return (
     <>
       <AuthContextProvider>
-      <GlobalStyle />
-        <Component {...pageProps} />
+        <RequisitosContextProvider>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </RequisitosContextProvider>
       </AuthContextProvider>
     </>
   )

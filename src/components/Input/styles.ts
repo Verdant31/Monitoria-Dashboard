@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-export const InputContainer = styled.div`
-  width: 80%;
-  text-align: left;
-  margin: 0 auto;
+interface InputContainerProps {
+  width: string;
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
+  width: ${props => props.width};
+  text-align: center;
   margin-bottom: 1.4rem;
 `
 
 export const Input = styled.input`
-  width: ${(props) => props.width};
-
+  width: 100%;
   padding: 7px;
   padding-left: 0.7rem;
 
@@ -18,6 +20,7 @@ export const Input = styled.input`
   border-radius: 2px;
 `
 export const InputLabel = styled.p`
+  text-align: left;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
 `

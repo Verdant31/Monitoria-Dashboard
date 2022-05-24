@@ -19,7 +19,6 @@ export const IconsContainer = styled.div`
 `
 
 export const LogoutBtnContainer = styled.div`
-  display: flex;
   position: absolute;
-  right: 40px;
+  right: 20px;
 `

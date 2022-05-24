@@ -1,12 +1,11 @@
 import { IconsContainer, LogoutBtnContainer, SideBarContainer, Title } from "./styles";
-
 import HomeIcon from '@mui/icons-material/Home';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { IconButton } from "@mui/material";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
-import { Logout } from "@mui/icons-material";
 import LogoutButton from "../LogutButton";
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 interface SideBarProps {
   title: string;
@@ -34,6 +33,11 @@ const SideBar = ({title}: SideBarProps) => {
         <IconButton onClick={() => handleRedirect('Alunos')}>
           <LibraryBooksIcon fontSize="large" sx={{color: '#f2f2f2'}} />
         </IconButton>
+        {user?.role === "Professor" &&
+          <IconButton onClick={() => router.push('DashProf/AbrirVaga')}>
+            <AddBoxIcon fontSize="large" sx={{color: '#f2f2f2'}} />
+          </IconButton>
+        }
       </IconsContainer>
       <Title>{title}</Title>
       <LogoutBtnContainer>
