@@ -1,20 +1,39 @@
-import ListaSolicitacoes from "../../components/ListaSolicitacoes";
-import LogoutButton from "../../components/LogutButton";
-import solicitacoes from '../../../solicitacoes.json';
 import { Container, MainContainer } from "./styles"
 import SideBar from "../../components/SideBar";
+import Title from "../../components/Title";
+import ListaSolicitacoes from "../../components/ListaSolicitacoes";
+import { useEffect, useState } from "react";
+import { SolicitacaoMonitor, SolicitacaoAbertura } from "../../utils/types";
+import { useProfSolicitacoes } from "../../hooks/useProfSolicitacoes";
 
 const DashProf = () => {
+  const [ solicitacoesMonitores, setSolicitacoesMonitores] = useState<SolicitacaoMonitor[]>();
+  const [ solicitacoesAbertura, setSolicitacoesAbertura] = useState<SolicitacaoAbertura[]>();
+
+  useEffect(() => {
+    const GetSolicitacoes = async () => {
+      const { abertura, monitores } = await useProfSolicitacoes();
+      setSolicitacoesMonitores(monitores);
+      setSolicitacoesAbertura(abertura);
+    }
+    GetSolicitacoes();
+  },[])
+
   return (
-    <>
-      <SideBar title="Solicitações de monitoria"/>
+    <Container>
+      <SideBar/>
       <MainContainer>
-        {solicitacoes 
-          ? <ListaSolicitacoes solicitacoes={solicitacoes}/>
-          : <h1>Você não tem solicitações no momento.</h1>
-        }
+        <Title displayTitle={false} title={"Solicitações de Monitoria"} />
+        {solicitacoesMonitores && (
+          <>
+            <ListaSolicitacoes title="Solicitações de Monitores" solicitacoes={solicitacoesMonitores}/>
+          </>
+        )}
+        {solicitacoesAbertura && (
+          <ListaSolicitacoes abertura title="Abertura de Monitoria" solicitacoes={solicitacoesAbertura}/>
+        )}
       </MainContainer>
-    </>
+    </Container>
   )
 }
 export default DashProf

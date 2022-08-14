@@ -1,17 +1,18 @@
 import AbrirVagaForm from "../../../components/AbrirVagaForm";
-import ListaMonitores from "../../../components/ListaMonitores";
-import SearchBar from "../../../components/SearchBar";
 import SideBar from "../../../components/SideBar";
-import { MainContainer } from "./styles";
+import Title from "../../../components/Title";
+import { MainContainer } from "../styles";
+import { Container } from "./styles";
 
 const AbrirVaga = () => {
   return (
-    <>
-      <SideBar title="Abrir vaga para monitoria"/>
+    <Container>
+      <SideBar/>
       <MainContainer>
+        <Title displayTitle title={"Abertura do Edital de Monitoria"} />
         <AbrirVagaForm />
-      </MainContainer>  
-    </>
+      </MainContainer>
+    </Container>
   )
 }
 export default AbrirVaga;

@@ -1,12 +1,9 @@
-import { AddBox } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { useState } from "react";
 import MyInput from "../Input";
-import { DoubleFieldsContainer, FormContainer, SubmitButton, FormTitle, InputsContainer, PreRequisitoDesc, PreRequisitosContainer } from "./styles";
+import { DoubleFieldsContainer, FormContainer, SubmitButton, FormTitle, InputsContainer, ButtonContainer } from "./styles";
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useRequisitos } from "../../contexts/RequisitosContext";
-import MyButton from "../Button";
 
 const AbrirVagaForm = () => {
   const {handleAddRequisito, requisitos } = useRequisitos();
@@ -17,8 +14,6 @@ const AbrirVagaForm = () => {
   const updateCodDisciplina = (value: string) => setCodDisciplina(value);
   const updatePreRequisito = (value: string) => setPreRequisito(value);
   const updateNomeDisciplina = (value: string) => setNomeDisciplina(value);
-
-
   return (
     <FormContainer>
       <FormTitle>Cadastro de Monitoria</FormTitle>
@@ -30,12 +25,14 @@ const AbrirVagaForm = () => {
         <DoubleFieldsContainer gap="1rem">
           <MyInput updateValue={updatePreRequisito} labelText="Pré Requisitos" width="31.3rem" />
           <IconButton onClick={() => handleAddRequisito(preRequisito)}>
-            <AddBoxIcon fontSize="large" sx={{color: '#f2f2f2', width: '2.7rem', height: '2.7rem', paddingTop: '0.4rem'}} />
+            <AddBoxIcon fontSize="large" sx={{color: '#f2f2f2', width: '2.7rem', height: '2.7rem', paddingTop: '1.2rem'}} />
           </IconButton>
         </DoubleFieldsContainer>
       </InputsContainer>
       {requisitos}
-      <SubmitButton>Cadastrar</SubmitButton>
+      <ButtonContainer>
+        <SubmitButton>Cadastrar</SubmitButton>
+      </ButtonContainer>
     </FormContainer>
   )
 }

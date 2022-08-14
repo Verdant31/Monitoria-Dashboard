@@ -8,8 +8,7 @@ interface InfoCardProps {
 const InfoCard = ({value, title}: InfoCardProps) => {
   return (
     <InfoContainer>
-        <p>{title}</p>
-        <p>{value}</p>
+        <p>{title} <p style={{display: 'inline'}}>{value}</p></p>
     </InfoContainer>
   )
 }

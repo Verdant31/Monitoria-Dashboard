@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
   position: relative;
-  height: 35rem;
   background-color: #2f6195;
   border-radius: 5px;
   max-width: 750px;
-  margin: 2rem auto;
+  margin: auto;
 `
 export const FormTitle = styled.div`
   font-size: 1.5rem;
@@ -28,13 +27,13 @@ interface DoubleFieldsContainerProps {
 export const DoubleFieldsContainer = styled.div<DoubleFieldsContainerProps>`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: ${props => props.gap};
   width: 100%;
   margin-bottom: 1rem;
 `
 export const PreRequisitosContainer = styled.div`
   display: flex;
-  position: relative;
   width: 35.1rem;
   height: 3rem;
   margin: auto;
@@ -46,9 +45,16 @@ export const PreRequisitoDesc = styled.p`
 `
 
 export const SubmitButton = styled.button`
-  position: absolute;
-  bottom: 50px;
-  left: 37.5%;
+  margin-top: 2rem;
+  justify-self: center;
   height: 2.3rem;
-  width: 12rem
+  width: 12rem;
+  margin-bottom: 2rem;
+`
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
 `

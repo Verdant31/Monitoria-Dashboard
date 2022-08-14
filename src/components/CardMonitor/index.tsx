@@ -1,14 +1,14 @@
-import { MonitorCard } from "../../utils/types";
+import { Monitor, MonitorCard } from "../../utils/types";
 import { MonitorCardContainer } from "./styles";
 
 interface CardMonitorProps {
-  monitor: MonitorCard;
+  monitor: Monitor;
 }
 
 const CardMonitor = ({monitor}: CardMonitorProps) => {
   return (
     <MonitorCardContainer>
-      <p>Nome: {monitor.nomeMonitor}</p>
+      <p>Nome: {monitor.nomeAluno}</p>
       <p>Email: {monitor.email}</p>
     </MonitorCardContainer>
   )

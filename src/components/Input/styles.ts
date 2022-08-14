@@ -21,7 +21,8 @@ export const Input = styled.input`
 `
 export const InputLabel = styled.p`
   text-align: left;
-  margin-bottom: 0.5rem;
+  color: #f2f2f2;
+  margin-bottom: 1rem;
   font-size: 1.1rem;
 `
 

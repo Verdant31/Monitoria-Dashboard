@@ -1,17 +1,18 @@
-import ListaAlunosPendentes from "../../../components/ListaAlunosPendentes";
-import LogoutButton from "../../../components/LogutButton";
-import SearchBar from "../../../components/SearchBar";
+import CardAluno from "../../../components/CardAluno";
 import SideBar from "../../../components/SideBar";
-import { Container, MainContainer, Title} from "./styles";
+import Title from "../../../components/Title";
+import { Container, MainContainer } from "./styles";
 
 const AlunosAprovados = () => {
   return (
     <>
-      <SideBar title="Alunos Pendentes" />
-      <MainContainer>
-        <SearchBar />
-        <ListaAlunosPendentes />
-      </MainContainer>  
+      <Container>
+        <SideBar/>
+        <MainContainer>
+          <Title displayTitle title={"Alunos Pendentes"} />
+          <CardAluno />
+        </MainContainer>
+      </Container>
     </>
   )
 }

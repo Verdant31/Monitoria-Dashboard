@@ -1,19 +1,21 @@
-import ListaAlunosPendentes from "../../../components/ListaAlunosPendentes";
+import { useEffect } from "react";
 import ListaMonitores from "../../../components/ListaMonitores";
-import LogoutButton from "../../../components/LogutButton";
 import SearchBar from "../../../components/SearchBar";
 import SideBar from "../../../components/SideBar";
-import { MainContainer } from "./styles";
+import Title from "../../../components/Title";
+import { useProfMonitores } from "../../../hooks/useProfMonitores";
+import { Container, MainContainer } from "./styles";
 
 const MeusMonitores = () => {
   return (
-    <>
-      <SideBar title="Meus Monitores"/>
+    <Container>
+      <SideBar/>
       <MainContainer>
+        <Title displayTitle title={"Meus Monitores"} />
         <SearchBar />
         <ListaMonitores />
-      </MainContainer>  
-    </>
+      </MainContainer>
+    </Container>
   )
 }
 

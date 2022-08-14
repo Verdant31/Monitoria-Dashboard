@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   html {
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   body {
@@ -17,7 +17,7 @@ export default createGlobalStyle`
   }
   
   body, input, button {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 16px;
   }
   h1, h2, h3, h4, h5, h6, strong {
@@ -25,5 +25,9 @@ export default createGlobalStyle`
   }
   button {
     cursor: pointer;
+  }
+  p {
+    color: #303030;
+    font-size: 18px;
   }
 `;

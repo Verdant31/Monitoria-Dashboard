@@ -1,20 +1,28 @@
 import ListaSolicitacoes from "../../components/ListaSolicitacoes";
 import SideBar from "../../components/SideBar";
-import { Container, MainContainer, Title } from "./styles"
+
+import { Container, MainContainer } from "./styles"
+
 import data from '../../../solicitacoes.json';
-import LogoutButton from "../../components/LogutButton";
+import Title from "../../components/Title";
+import ModalSolicitacao from "../../components/ModalSolicitacao";
+import { useSolicitacaoModalContext } from "../../contexts/SolicitacaoModalContext";
 
 const DashProf = () => {
-
+  const { isOpen } = useSolicitacaoModalContext();
   return (
     <>
-      <SideBar title="Solicitações para Coordenação"/>
-      <MainContainer>
-        {data 
-          ? <ListaSolicitacoes solicitacoes={data}/>
-          : <h1>Você não tem solicitações no momento.</h1>
-        }
-      </MainContainer>
+      {isOpen && <ModalSolicitacao />}
+      <Container isModalOpen={isOpen}>
+        <SideBar/>
+        <MainContainer>
+          <Title displayTitle title={"Solicitações de Monitoria"} />
+          {data 
+            ? <ListaSolicitacoes solicitacoes={data}/>
+            : <h1>Você não tem solicitações no momento.</h1>
+          }
+        </MainContainer>
+      </Container>
     </>
   )
 }

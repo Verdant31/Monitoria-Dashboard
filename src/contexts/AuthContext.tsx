@@ -1,11 +1,11 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { User } from "../utils/types";
-import data from '../../data.json';
 import { useRouter } from "next/router";
+import { api } from "../services/axios";
 
 type AuthContextType = {
   user: User | undefined;
-  logIn: (matricula: string, senha: string) => string;
+  logIn: (matricula: string, senha: string) => Promise<string>;
   logOut: () => void;
 }
 
@@ -19,18 +19,18 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
   const [ user, setUser ] = useState<User>();
   const router = useRouter();
 
-  const logIn = (matricula: string, senha: string) => {
-    let role = '';
-    data.map((user) => {
-      if(matricula === user.matricula && senha === user.senha) {
-        setUser(user);
-        role = user.role;
-      }
+  const logIn = async (matricula: string, senha: string) => {
+    let role = ''
+    await api.post('/auth/login/colaborador', {matricula, senha}).then((res) => {
+      const user = res.data.user;
+      role = user.role;
+      setUser({matricula, nome: user.nome, role: user.role});
     })
     return role;
   }
 
   const logOut = () => {
+    setUser(undefined);
     router.push('/')
   }
 

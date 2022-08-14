@@ -1,48 +1,34 @@
-import { IconsContainer, LogoutBtnContainer, SideBarContainer, Title } from "./styles";
+import { IconsContainer, SideBarContainer } from "./styles";
 import HomeIcon from '@mui/icons-material/Home';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { IconButton } from "@mui/material";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
-import LogoutButton from "../LogutButton";
+import LogoutIcon from '@mui/icons-material/Logout';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
-interface SideBarProps {
-  title: string;
-}
-
-const SideBar = ({title}: SideBarProps) => {
-  const { user } = useAuth();
+const SideBar = () => {
+  const { user, logOut } = useAuth();
   const router = useRouter();
-
-  const handleRedirect = (path: string) => {
-    if(path === 'Home') user?.role==="Coordenador" 
-      ? router.push('/DashCord') 
-      : router.push('/DashProf')
-    if(path === 'Alunos') user?.role==="Coordenador" 
-      ? router.push('DashCord/AlunosPendentes') 
-      : router.push('DashProf/MeusMonitores')
-  }
 
   return (
     <SideBarContainer>
       <IconsContainer>
-        <IconButton onClick={() => handleRedirect('Home')}>
+        <IconButton onClick={() => user?.role === 'Coordenador' ? router.push('/DashCord') : router.push('/DashProf')}>
           <HomeIcon fontSize="large" sx={{color: '#f2f2f2'}} />  
         </IconButton>
-        <IconButton onClick={() => handleRedirect('Alunos')}>
+        <IconButton onClick={() => user?.role === 'Coordenador' ? router.push('/DashCord/AlunosPendentes') : router.push('/DashProf/MeusMonitores')}>
           <LibraryBooksIcon fontSize="large" sx={{color: '#f2f2f2'}} />
         </IconButton>
         {user?.role === "Professor" &&
-          <IconButton onClick={() => router.push('DashProf/AbrirVaga')}>
+          <IconButton onClick={() => router.push('/DashProf/AbrirVaga')}>
             <AddBoxIcon fontSize="large" sx={{color: '#f2f2f2'}} />
           </IconButton>
         }
+        <IconButton onClick={() => logOut()}>
+          <LogoutIcon fontSize="large" sx={{color: '#f2f2f2'}}/>
+        </IconButton>
       </IconsContainer>
-      <Title>{title}</Title>
-      <LogoutBtnContainer>
-        <LogoutButton />
-      </LogoutBtnContainer>
     </SideBarContainer>
   )
 }

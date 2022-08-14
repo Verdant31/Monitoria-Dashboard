@@ -12,7 +12,7 @@ const MyInput = ({updateValue, labelText, width,...props}: InputProps) => {
   return (
     <InputContainer width={width} >
       <InputLabel>{labelText}</InputLabel>
-      <Input onChange={(e) => updateValue(e.target.value)} {...props} />
+      <Input color="red" onChange={(e) => updateValue(e.target.value)} {...props} />
     </InputContainer>
   )
 }

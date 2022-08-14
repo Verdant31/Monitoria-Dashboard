@@ -1,25 +1,23 @@
 import { useAuth } from "../../contexts/AuthContext";
-import { Solicitacao } from "../../utils/types";
+import { Solicitacao, SolicitacaoAbertura, SolicitacaoMonitor } from "../../utils/types";
 import CardSolicitacao from "../CardSolicitacao";
-import { Container } from "./styles";
+import { GridContainer, Container, GridTitle } from "./styles";
 
 interface ListaSolicitacoes {
-  solicitacoes: Solicitacao[];
+  solicitacoes: SolicitacaoMonitor[] | SolicitacaoAbertura[];
+  title?: string;
+  abertura?: boolean;
 }
 
-const ListaSolicitacoes = ({solicitacoes}: ListaSolicitacoes) => {
-  const { user } = useAuth();
+const ListaSolicitacoes = ({solicitacoes, title, abertura}: ListaSolicitacoes) => {
   return (
     <Container>
-      {solicitacoes.map((solicitacao) => {
-        if(user?.role === 'Coordenador') {
-          if(solicitacao.aprovada === false) 
-            return <CardSolicitacao key={solicitacao.id} solicitacao={solicitacao} />
-        }else {
-          if(solicitacao.matriculaProfessor === user?.matricula)
-            return <CardSolicitacao key={solicitacao.id} solicitacao={solicitacao} />
-        }
-      })}
+      {title && <GridTitle>{title}</GridTitle> }
+      <GridContainer>
+        {solicitacoes.map((solicitacao) => {
+          return <CardSolicitacao key={solicitacao.id} abertura={abertura} solicitacao={solicitacao} />
+        })}
+      </GridContainer>
     </Container>
   )
 }
