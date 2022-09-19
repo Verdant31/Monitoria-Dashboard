@@ -1,36 +1,53 @@
-import { Container, MainContainer } from "./styles"
-import SideBar from "../../components/SideBar";
-import Title from "../../components/Title";
-import ListaSolicitacoes from "../../components/ListaSolicitacoes";
-import { useEffect, useState } from "react";
-import { SolicitacaoMonitor, SolicitacaoAbertura } from "../../utils/types";
-import { useProfSolicitacoes } from "../../hooks/useProfSolicitacoes";
+import { Container, MainContainer } from './styles'
+import SideBar from '../../components/SideBar'
+import Title from '../../components/Title'
+import ListaSolicitacoes from '../../components/ListaSolicitacoes'
+import { useEffect, useState } from 'react'
+import { SolicitacaoMonitor, SolicitacaoAbertura } from '../../utils/types'
+import { useAuth } from '../../contexts/AuthContext'
+import { ProfessorController } from '../../api/ProfessorController'
 
 const DashProf = () => {
-  const [ solicitacoesMonitores, setSolicitacoesMonitores] = useState<SolicitacaoMonitor[]>();
-  const [ solicitacoesAbertura, setSolicitacoesAbertura] = useState<SolicitacaoAbertura[]>();
+  const [solicitacoesMonitores, setSolicitacoesMonitores] =
+    useState<SolicitacaoMonitor[]>()
+  const [solicitacoesAbertura, setSolicitacoesAbertura] =
+    useState<SolicitacaoAbertura[]>()
+
+  const { user } = useAuth()
 
   useEffect(() => {
-    const GetSolicitacoes = async () => {
-      const { abertura, monitores } = await useProfSolicitacoes();
-      setSolicitacoesMonitores(monitores);
-      setSolicitacoesAbertura(abertura);
+    async function getSolicitacoes() {
+      if (user) {
+        await ProfessorController.getInstance()
+          .getAllSolicitacoes(user)
+          .then((res) => {
+            setSolicitacoesMonitores(res.monitores)
+            setSolicitacoesAbertura(res.abertura)
+          })
+      }
     }
-    GetSolicitacoes();
-  },[])
+    getSolicitacoes()
+  }, [user])
 
   return (
     <Container>
-      <SideBar/>
+      <SideBar />
       <MainContainer>
-        <Title displayTitle={false} title={"Solicitações de Monitoria"} />
+        <Title displayTitle={false} title={'Solicitações de Monitoria'} />
         {solicitacoesMonitores && (
           <>
-            <ListaSolicitacoes title="Solicitações de Monitores" solicitacoes={solicitacoesMonitores}/>
+            <ListaSolicitacoes
+              title="Solicitações de Monitores"
+              solicitacoes={solicitacoesMonitores}
+            />
           </>
         )}
         {solicitacoesAbertura && (
-          <ListaSolicitacoes abertura title="Abertura de Monitoria" solicitacoes={solicitacoesAbertura}/>
+          <ListaSolicitacoes
+            abertura
+            title="Abertura de Monitoria"
+            solicitacoes={solicitacoesAbertura}
+          />
         )}
       </MainContainer>
     </Container>

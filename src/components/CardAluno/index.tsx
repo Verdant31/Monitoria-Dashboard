@@ -1,5 +1,5 @@
-import InfoCard from "../InfoCard";
-import { CardContainer } from "./styles";
+import InfoCard from '../InfoCard'
+import { CardContainer } from './styles'
 
 const CardAluno = () => {
   return (
@@ -9,4 +9,4 @@ const CardAluno = () => {
     </CardContainer>
   )
 }
-export default CardAluno;
+export default CardAluno

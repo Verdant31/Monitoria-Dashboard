@@ -1,32 +1,46 @@
-import CardMonitor from '../CardMonitor';
-import {  MonitoresContainer, DisciplinaContainer, DisciplinaTitulo, Container } from './styles';
-import { useEffect, useState } from "react";
-import { useProfMonitores } from "../../hooks/useProfMonitores";
-import { Disciplina } from '../../utils/types';
+import CardMonitor from '../CardMonitor'
+import {
+  MonitoresContainer,
+  DisciplinaContainer,
+  DisciplinaTitulo,
+  Container,
+} from './styles'
+import { useEffect, useState } from 'react'
+import { Disciplina } from '../../utils/types'
+import { useAuth } from '../../contexts/AuthContext'
+import { ProfessorController } from '../../api/ProfessorController'
 
 const ListaMonitores = () => {
-  const [ disciplinas, setDisciplinas ] = useState<Disciplina[]>()
+  const [disciplinas, setDisciplinas] = useState<Disciplina[]>()
+  const { user } = useAuth()
+
   useEffect(() => {
-    const GetMonitores = async () => {
-      const { disciplinas } = await useProfMonitores();
-      setDisciplinas(disciplinas)
+    async function getMonitores() {
+      if (user) {
+        await ProfessorController.getInstance()
+          .getMonitores(user)
+          .then((res) => {
+            setDisciplinas(res.disciplinas)
+          })
+      }
     }
-    GetMonitores();
-  },[])
+    getMonitores()
+  }, [user])
 
   return (
     <Container>
-      {disciplinas && disciplinas.map(disciplina => (
-        <DisciplinaContainer key={disciplina.idDisciplina}>
-          <DisciplinaTitulo>{disciplina.nomeDisciplina}</DisciplinaTitulo>
-          <MonitoresContainer>
-            {disciplina.monitores.map((monitor) => {
-              return <CardMonitor monitor={monitor} key={monitor.id}/>
-            })}
-          </MonitoresContainer>
-        </DisciplinaContainer>
-      ))} 
+      {disciplinas &&
+        disciplinas.map((disciplina) => (
+          <DisciplinaContainer key={disciplina.idDisciplina}>
+            <DisciplinaTitulo>{disciplina.nomeDisciplina}</DisciplinaTitulo>
+            <MonitoresContainer>
+              {disciplina.monitores.map((monitor) => {
+                return <CardMonitor monitor={monitor} key={monitor.id} />
+              })}
+            </MonitoresContainer>
+          </DisciplinaContainer>
+        ))}
     </Container>
   )
 }
-export default ListaMonitores;
+export default ListaMonitores

@@ -1,18 +1,18 @@
 import type { AppProps } from 'next/app'
-import AuthContextProvider from '../contexts/AuthContext';
-import RequisitosContextProvider from '../contexts/RequisitosContext';
-import { SolicitacaoModalContext, SolicitacaoModalContextProvider, useSolicitacaoModalContext } from '../contexts/SolicitacaoModalContext';
-import GlobalStyle from './global';
+import AuthContextProvider from '../contexts/AuthContext'
+import { SolicitacaoModalContextProvider } from '../contexts/SolicitacaoModalContext'
+import GlobalStyle from './global'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
-const MyApp = ({Component, pageProps}: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
+      <ToastContainer pauseOnHover={false} />
       <AuthContextProvider>
         <SolicitacaoModalContextProvider>
-          <RequisitosContextProvider>
-            <GlobalStyle />
-            <Component {...pageProps} />
-          </RequisitosContextProvider>
+          <GlobalStyle />
+          <Component {...pageProps} />
         </SolicitacaoModalContextProvider>
       </AuthContextProvider>
     </>

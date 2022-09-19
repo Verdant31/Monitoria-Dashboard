@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const GridContainer = styled.div`
   display: grid;
@@ -8,11 +8,11 @@ export const GridContainer = styled.div`
   row-gap: 40px;
   margin-top: 1.5rem;
 `
-export const Container = styled.div `
+export const Container = styled.div`
   width: 100%;
   margin: auto;
   margin-bottom: 3rem;
-`;
-export const GridTitle = styled.h1 `
+`
+export const GridTitle = styled.h1`
   padding-left: 4rem;
 `

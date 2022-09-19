@@ -1,14 +1,14 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  
+
   width: 100vw;
   height: 100vh;
-  
+
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const Logo = styled.img`
   width: 22rem;
@@ -29,7 +29,6 @@ export const FormContainer = styled.div`
   padding-top: 2rem;
 
   border-radius: 5px;
-  border-radius: 5;  
+  border-radius: 5;
   background-color: #2f6195;
 `
-

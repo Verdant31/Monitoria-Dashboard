@@ -1,15 +1,18 @@
-import { InfoContainer } from "./styles";
+import { InfoContainer } from './styles'
 
 interface InfoCardProps {
-  title: string;
-  value: string;
+  title: string
+  value: string
 }
 
-const InfoCard = ({value, title}: InfoCardProps) => {
+const InfoCard = ({ value, title }: InfoCardProps) => {
   return (
     <InfoContainer>
-        <p>{title} <p style={{display: 'inline'}}>{value}</p></p>
+      <p>
+        {title}{' '}
+        <span style={{ display: 'inline', fontWeight: '400' }}>{value}</span>
+      </p>
     </InfoContainer>
   )
 }
-export default InfoCard;
+export default InfoCard

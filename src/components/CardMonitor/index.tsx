@@ -1,11 +1,11 @@
-import { Monitor, MonitorCard } from "../../utils/types";
-import { MonitorCardContainer } from "./styles";
+import { Monitor, MonitorCard } from '../../utils/types'
+import { MonitorCardContainer } from './styles'
 
 interface CardMonitorProps {
-  monitor: Monitor;
+  monitor: Monitor
 }
 
-const CardMonitor = ({monitor}: CardMonitorProps) => {
+const CardMonitor = ({ monitor }: CardMonitorProps) => {
   return (
     <MonitorCardContainer>
       <p>Nome: {monitor.nomeAluno}</p>
@@ -13,4 +13,4 @@ const CardMonitor = ({monitor}: CardMonitorProps) => {
     </MonitorCardContainer>
   )
 }
-export default CardMonitor;
+export default CardMonitor

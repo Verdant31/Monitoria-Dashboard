@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface InputContainerProps {
-  width: string;
+  width: string
 }
 
 export const InputContainer = styled.div<InputContainerProps>`
-  width: ${props => props.width};
+  width: ${(props) => props.width};
   text-align: center;
   margin-bottom: 1.4rem;
 `
@@ -25,4 +25,3 @@ export const InputLabel = styled.p`
   margin-bottom: 1rem;
   font-size: 1.1rem;
 `
-

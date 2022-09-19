@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   position: absolute;
@@ -7,7 +7,7 @@ export const Container = styled.div`
   left: 50%;
   top: 50%;
   margin-left: -12rem;
-  margin-top: -8.25rem;;
+  margin-top: -8.25rem;
   // Fim da gambiarra para centralizar o modal
 
   width: 30rem;
@@ -22,7 +22,7 @@ export const Container = styled.div`
     color: #303030;
   }
   div {
-    text-align: center
+    text-align: center;
   }
 `
 

@@ -1,12 +1,12 @@
-import Image from "next/image"
-import { TitleContainer } from "./styles"
+import Image from 'next/image'
+import { TitleContainer } from './styles'
 
 interface TitleProps {
-  title: string;
+  title: string
   displayTitle: boolean
 }
 
-const Title = ({title, displayTitle}: TitleProps) => {
+const Title = ({ title, displayTitle }: TitleProps) => {
   return (
     <TitleContainer>
       <Image src="/logoastitle.png" width={400} height={80} alt="hehe" />

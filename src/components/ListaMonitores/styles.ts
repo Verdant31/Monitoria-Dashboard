@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const DisciplinaContainer = styled.div`
   background-color: #e6e8e6;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   margin: auto;
   overflow-y: scroll;
   width: 80%;
-  padding-inline: 2rem;;
+  padding-inline: 2rem;
   margin-top: 1.5rem;
 `
 
@@ -28,4 +28,3 @@ export const MonitoresContainer = styled.div`
 export const DisciplinaTitulo = styled.p`
   font-size: 1.5rem;
 `
-
