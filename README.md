@@ -25,7 +25,7 @@ This repo is a Dashboard for Coordinators and Professors to visualize which stud
 
 ## ⚙️ Installation
 ```
-# Open an terminal and type the command above
+# Open a terminal and type the command above
 $ git clone https://github.com/Verdant31/Monitoria-Dashboard.git
 ```
 
