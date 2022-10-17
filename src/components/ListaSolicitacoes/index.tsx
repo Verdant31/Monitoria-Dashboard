@@ -3,7 +3,7 @@ import CardSolicitacao from '../CardSolicitacao'
 import { GridContainer, Container, GridTitle } from './styles'
 
 interface ListaSolicitacoesProps {
-  solicitacoes: SolicitacaoMonitor[] | SolicitacaoAbertura[]
+  solicitacoes: SolicitacaoMonitor[] | SolicitacaoAbertura[] | undefined
   title?: string
   abertura?: boolean
 }
@@ -17,10 +17,10 @@ const ListaSolicitacoes = ({
     <Container>
       {title && <GridTitle>{title}</GridTitle>}
       <GridContainer>
-        {solicitacoes.map((solicitacao) => {
+        {solicitacoes?.map((solicitacao, index) => {
           return (
             <CardSolicitacao
-              key={solicitacao.id}
+              key={index}
               abertura={abertura}
               solicitacao={solicitacao}
             />

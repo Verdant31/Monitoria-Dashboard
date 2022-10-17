@@ -31,7 +31,6 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
   useEffect(() => {
     const { 'monitoria.token': token } = parseCookies()
     if (token) {
-      console.log('Tem token po')
       api
         .get('/auth/me')
         .then((res) => {
@@ -75,6 +74,8 @@ const AuthContextProvider = (props: AuthContextProviderPros) => {
       })
   }
   const logOut = () => {
+    destroyCookie(undefined, 'monitoria.token')
+    destroyCookie(undefined, 'monitoria.refreshToken')
     setUser(undefined)
     router.push('/')
   }

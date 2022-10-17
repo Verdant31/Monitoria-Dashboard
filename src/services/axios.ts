@@ -23,8 +23,9 @@ api.interceptors.response.use(
           isRefreshing = true
 
           api
-            .post('/refresh', { refreshToken })
+            .post('/auth/refresh', { refreshToken })
             .then((res) => {
+              console.log(res)
               const { token } = res.data
               setCookie(undefined, 'monitoria.token', token, {
                 maxAge: 60 * 60 * 24 * 30, // 30 days
@@ -60,7 +61,7 @@ api.interceptors.response.use(
         return new Promise((resolve, reject) => {
           failedRequestsQueue.push({
             onSuccess: (token: string) => {
-              orinalConfig.headers.Authorization = `Bearer ${token}`
+              orinalConfig.headers.Authorization = `${token}`
               resolve(api(orinalConfig))
             },
             onFailure: (err: AxiosError) => {
