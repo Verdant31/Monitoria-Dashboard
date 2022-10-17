@@ -1,6 +1,5 @@
 // Components
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import MyButton from '../components/Button'
 import MyInput from '../components/Input'
@@ -10,23 +9,11 @@ import { Container, FormContainer, LogInContainer } from './home'
 
 const Home = () => {
   const { logIn } = useAuth()
-  const router = useRouter()
   const [matricula, setMatricula] = useState('')
   const [senha, setSenha] = useState('')
 
   const handleLogIn = async () => {
-    await logIn(matricula, senha).then((res) => {
-      switch (res) {
-        case 'Coordenador': {
-          router.push('DashCord')
-          break
-        }
-        case 'Professor': {
-          router.push('DashProf')
-          break
-        }
-      }
-    })
+    await logIn(matricula, senha)
   }
   return (
     <Container>

@@ -1,6 +1,5 @@
 /* eslint-disable no-use-before-define */
 import { api } from '../services/axios'
-import { User } from '../utils/types'
 
 export class CoordenadorController {
   private static coordenadorController: CoordenadorController
@@ -12,10 +11,9 @@ export class CoordenadorController {
     return this.coordenadorController
   }
 
-  public async getAllSolicitacoes(user: User) {
+  public async getAllSolicitacoes() {
     let monitores
     await api.get('/coordenador/solicitacoes').then((res) => {
-      console.log(res)
       monitores = res.data.solicitacoes
     })
 

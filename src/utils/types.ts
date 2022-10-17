@@ -2,7 +2,6 @@ export type User = {
   matricula: string
   nome: string
   role: string
-  token: string
 }
 
 export type SolicitacaoMonitor = {

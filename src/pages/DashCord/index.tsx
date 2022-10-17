@@ -18,16 +18,13 @@ const DashProf = () => {
     useState<SolicitacaoMonitor[]>()
 
   const { user } = useAuth()
-
   useEffect(() => {
     async function getSolicitacoes() {
-      if (user) {
-        await CoordenadorController.getInstance()
-          .getAllSolicitacoes(user)
-          .then((res) => {
-            setSolicitacoesMonitores(res.monitores)
-          })
-      }
+      await CoordenadorController.getInstance()
+        .getAllSolicitacoes()
+        .then((res) => {
+          setSolicitacoesMonitores(res.monitores)
+        })
     }
     getSolicitacoes()
   }, [user])
