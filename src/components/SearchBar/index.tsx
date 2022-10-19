@@ -1,7 +1,11 @@
 import { SearchBarContainer, SearchBarInput } from './styles'
 import SearchIcon from '@mui/icons-material/Search'
 
-const SearchBar = () => {
+interface SearchBarProps {
+  setFilter: (value: string) => void
+}
+
+const SearchBar = ({ setFilter }: SearchBarProps) => {
   return (
     <SearchBarContainer>
       <SearchIcon
@@ -12,7 +16,10 @@ const SearchBar = () => {
           paddingLeft: '0.8rem',
         }}
       />
-      <SearchBarInput placeholder="Pesquise por nome de disciplina..." />
+      <SearchBarInput
+        onChange={(e) => setFilter(e.target.value)}
+        placeholder="Pesquise por nome de disciplina..."
+      />
     </SearchBarContainer>
   )
 }

@@ -1,11 +1,16 @@
 import InfoCard from '../InfoCard'
 import { CardContainer } from './styles'
 
-const CardAluno = () => {
+interface CardAlunoProps {
+  matricula: string
+  disciplina: string
+}
+
+const CardAluno = ({ matricula, disciplina }: CardAlunoProps) => {
   return (
     <CardContainer>
-      <InfoCard title="Aluno:" value="Rafale Andreola" />
-      <InfoCard title="Disciplina:" value="Sistemas Embarcados" />
+      <InfoCard title="Matricula:" value={matricula} />
+      <InfoCard title="Disciplina:" value={disciplina} />
     </CardContainer>
   )
 }

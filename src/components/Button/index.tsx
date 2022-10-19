@@ -1,6 +1,4 @@
 import React, { ButtonHTMLAttributes } from 'react'
-import { text } from 'stream/consumers'
-
 import { Button } from './styles'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,18 +6,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   width: string
   textColor?: string
   bgColor: string
-  onClick: () => void
+  onClick?: () => void
 }
-const MyButton = ({ width, textColor, bgColor, ...props }: ButtonProps) => {
-  return (
-    <Button
-      textColor={textColor || ''}
-      bgColor={bgColor}
-      width={width}
-      {...props}
-    >
-      {props.children}
-    </Button>
-  )
-}
+// eslint-disable-next-line react/display-name
+const MyButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    return (
+      <Button ref={ref} textColor={props.textColor || ''} {...props}>
+        {props.children}
+      </Button>
+    )
+  },
+)
 export default MyButton

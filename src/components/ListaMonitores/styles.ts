@@ -15,6 +15,7 @@ export const Container = styled.div`
   width: 80%;
   padding-inline: 2rem;
   margin-top: 1.5rem;
+  height: 40rem;
 `
 
 export const MonitoresContainer = styled.div`

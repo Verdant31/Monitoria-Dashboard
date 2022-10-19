@@ -5,28 +5,13 @@ import {
   DisciplinaTitulo,
   Container,
 } from './styles'
-import { useEffect, useState } from 'react'
 import { Disciplina } from '../../utils/types'
-import { useAuth } from '../../contexts/AuthContext'
-import { ProfessorController } from '../../api/ProfessorController'
 
-const ListaMonitores = () => {
-  const [disciplinas, setDisciplinas] = useState<Disciplina[]>()
-  const { user } = useAuth()
+interface ListaMonitoresProps {
+  disciplinas: Disciplina[] | undefined
+}
 
-  useEffect(() => {
-    async function getMonitores() {
-      if (user) {
-        await ProfessorController.getInstance()
-          .getMonitores(user)
-          .then((res) => {
-            setDisciplinas(res.disciplinas)
-          })
-      }
-    }
-    getMonitores()
-  }, [user])
-
+const ListaMonitores = ({ disciplinas }: ListaMonitoresProps) => {
   return (
     <Container>
       {disciplinas &&

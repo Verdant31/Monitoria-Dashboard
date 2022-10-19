@@ -1,17 +1,15 @@
-import React, { ReactNode, useRef, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import {
   Dialog,
   DialogClose,
-  DialogDescription,
   DialogTitle,
   DialogTrigger,
   IconButton,
-  Input,
   StyledContent,
   StyledOverlay,
-} from './styles'
+} from '../ModalSolicitacao/styles'
 import MyButton from '../Button'
 import { SolicitacaoController } from '../../api/SolicitacaoController'
 
@@ -28,39 +26,30 @@ function DialogContent({ children, ...props }: DialogContentProps) {
   )
 }
 
-interface SolicitacaoModalProps {
+interface ConfirmacaoModalProps {
   children?: ReactNode
   solicitacaoId: string
   updateLista: (solicitacaoId: string) => void
   trigger?: ReactNode
 }
-export const SolicitacaoModal = ({
+export const ConfirmacaoModal = ({
   solicitacaoId,
   updateLista,
   trigger,
-}: SolicitacaoModalProps) => {
+}: ConfirmacaoModalProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const justificativaInput = useRef<HTMLTextAreaElement>(null)
-
-  const handleRecusarSolicitacao = async () => {
-    if (justificativaInput.current && justificativaInput.current.value) {
-      await SolicitacaoController.getInstance()
-        .recusarSolicitacao(solicitacaoId, justificativaInput.current.value)
-        .then(() => {
-          updateLista(solicitacaoId)
-          setIsOpen(!isOpen)
-        })
-    }
+  const handleAprovarSolicitacao = async () => {
+    await SolicitacaoController.getInstance()
+      .aprovarSolicitacao(solicitacaoId)
+      .then(() => {
+        updateLista(solicitacaoId)
+      })
   }
   return (
     <Dialog open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
-        <DialogTitle>Justificar exclusão</DialogTitle>
-        <DialogDescription>
-          Insira uma justificativa de até 300 caracteres no campo abaixo.
-        </DialogDescription>
-        <Input ref={justificativaInput} />
+        <DialogTitle>Confirma a aprovação?</DialogTitle>
         <div
           style={{
             display: 'flex',
@@ -69,14 +58,15 @@ export const SolicitacaoModal = ({
           }}
         >
           <MyButton
-            onClick={handleRecusarSolicitacao}
+            onClick={handleAprovarSolicitacao}
             textColor="#f2f2f2"
             bgColor="#2f6195"
             width="100%"
           >
-            Enviar
+            Confirmar
           </MyButton>
         </div>
+
         <DialogClose asChild>
           <IconButton aria-label="Close">
             <Cross2Icon />

@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+import { AlunoPendente } from '../@types'
 import { api } from '../services/axios'
 
 export class CoordenadorController {
@@ -18,6 +19,15 @@ export class CoordenadorController {
     })
 
     return { monitores }
+  }
+
+  public async getSolicitacoesPendentes(): Promise<AlunoPendente[]> {
+    let alunosPendentes: AlunoPendente[] = []
+    await api.get('/coordenador/solicitacoes/pendentes').then((res) => {
+      alunosPendentes = res.data.solicitacoes
+    })
+
+    return alunosPendentes
   }
 
   public abrirVaga() {}

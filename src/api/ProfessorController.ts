@@ -1,7 +1,8 @@
 /* eslint-disable no-use-before-define */
+import { toast } from 'react-toastify'
+import { AbrirVagaMonitoria } from '../@types'
 import { api } from '../services/axios'
-import { User } from '../utils/types'
-
+import { SolicitacaoAbertura, SolicitacaoMonitor } from '../utils/types'
 export class ProfessorController {
   private static professorController: ProfessorController
 
@@ -12,34 +13,33 @@ export class ProfessorController {
     return this.professorController
   }
 
-  public abrirVaga() {}
-
-  public async getAllSolicitacoes(user: User) {
-    let abertura
-    let monitores
-    await api
-      .post('/professor/solicitacoes', { cpf_professor: user.matricula })
-      .then((res) => {
+  public async getAllSolicitacoes() {
+    let abertura: SolicitacaoAbertura[]
+    let monitores: SolicitacaoMonitor[]
+    return Promise.all([
+      await api.post('/professor/solicitacoes').then((res) => {
         monitores = res.data.solicitacoes
-      })
-
-    await api
-      .post('/professor/aberturamonitoria', { cpf_professor: user.matricula })
-      .then((res) => {
+      }),
+      await api.post('/professor/aberturamonitoria').then((res) => {
         abertura = res.data.solicitacoesAbertura
-      })
-    return { abertura, monitores }
+      }),
+    ]).then(() => {
+      return { abertura, monitores }
+    })
   }
 
-  public async getMonitores(user: User) {
-    return await api
-      .post(
-        '/professor/monitorias',
-        { cpf_professor: user.matricula },
-        { headers: { Authorization: user.token } },
-      )
+  public async getMonitores() {
+    return await api.post('/professor/monitorias').then((res) => {
+      return { disciplinas: res.data.disciplinas }
+    })
+  }
+
+  public async abrirVaga(vaga: AbrirVagaMonitoria) {
+    await api
+      .post('/professor/abrirmonitoria', { vaga })
       .then((res) => {
-        return { disciplinas: res.data.disciplinas }
+        toast.success('Sua vaga foi aberta com sucesso.')
       })
+      .catch((err) => toast.error(err))
   }
 }

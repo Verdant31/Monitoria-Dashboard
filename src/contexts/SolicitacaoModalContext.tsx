@@ -1,9 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
+import { SolicitacaoController } from '../api/SolicitacaoController'
 
-type SolicitacaoModalContext = {
+type SolicitacaoModalContextProps = {
   isOpen: boolean
-  openModal: (matriculaAluno: string) => void
+  openModal: (id: string) => void
+  recusarSolicitacao: (justificativa: string) => Promise<void>
   closeModal: () => void
+  revemodSolicitacaoId: string
 }
 
 type SolicitacaoModalContextProviderProps = {
@@ -11,24 +14,38 @@ type SolicitacaoModalContextProviderProps = {
 }
 
 export const SolicitacaoModalContext = createContext(
-  {} as SolicitacaoModalContext,
+  {} as SolicitacaoModalContextProps,
 )
 
 export const SolicitacaoModalContextProvider = (
   props: SolicitacaoModalContextProviderProps,
 ) => {
+  const [solicitacaoId, setSolicitacaoId] = useState('')
+  const [revemodSolicitacaoId, setRemovedSolicitacaoId] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const [matriculaAluno, setmatriculaAluno] = useState('')
-
-  const openModal = (matriculaAluno: string) => {
-    setIsOpen(true)
-    setmatriculaAluno(matriculaAluno)
+  const openModal = (id: string) => {
+    setIsOpen(!isOpen)
+    setSolicitacaoId(id)
+  }
+  const closeModal = () => setIsOpen(false)
+  const recusarSolicitacao = async (justificativa: string) => {
+    setRemovedSolicitacaoId(solicitacaoId)
+    await SolicitacaoController.getInstance().recusarSolicitacao(
+      solicitacaoId,
+      justificativa,
+    )
   }
 
-  const closeModal = () => setIsOpen(false)
-
   return (
-    <SolicitacaoModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <SolicitacaoModalContext.Provider
+      value={{
+        isOpen,
+        closeModal,
+        openModal,
+        recusarSolicitacao,
+        revemodSolicitacaoId,
+      }}
+    >
       {props.children}
     </SolicitacaoModalContext.Provider>
   )

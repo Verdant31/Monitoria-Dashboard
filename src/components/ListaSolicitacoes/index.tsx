@@ -3,24 +3,29 @@ import CardSolicitacao from '../CardSolicitacao'
 import { GridContainer, Container, GridTitle } from './styles'
 
 interface ListaSolicitacoesProps {
-  solicitacoes: SolicitacaoMonitor[] | SolicitacaoAbertura[]
+  solicitacoes: SolicitacaoMonitor[] | SolicitacaoAbertura[] | undefined
   title?: string
   abertura?: boolean
+  gridHeight?: string
+  updateLista: (solicitacaoId: string) => void
 }
 
 const ListaSolicitacoes = ({
   solicitacoes,
   title,
   abertura,
+  gridHeight,
+  updateLista,
 }: ListaSolicitacoesProps) => {
   return (
     <Container>
       {title && <GridTitle>{title}</GridTitle>}
-      <GridContainer>
-        {solicitacoes.map((solicitacao) => {
+      <GridContainer height={gridHeight}>
+        {solicitacoes?.map((solicitacao, index) => {
           return (
             <CardSolicitacao
-              key={solicitacao.id}
+              updateLista={updateLista}
+              key={index}
               abertura={abertura}
               solicitacao={solicitacao}
             />
