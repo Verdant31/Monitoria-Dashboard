@@ -24,7 +24,6 @@ export class CoordenadorController {
   public async getSolicitacoesPendentes(): Promise<AlunoPendente[]> {
     let alunosPendentes: AlunoPendente[] = []
     await api.get('/coordenador/solicitacoes/pendentes').then((res) => {
-      console.log(res)
       alunosPendentes = res.data.solicitacoes
     })
 

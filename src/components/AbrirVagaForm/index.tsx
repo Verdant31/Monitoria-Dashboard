@@ -14,8 +14,7 @@ import {
 } from './styles'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { MonitoriaController } from '../../api/MonitoriaController'
-import { useAuth } from '../../contexts/AuthContext'
+import { ProfessorController } from '../../api/ProfessorController'
 
 const AbrirVagaForm = () => {
   const [requisitos, setRequisitos] = useState<string[]>([])
@@ -23,26 +22,18 @@ const AbrirVagaForm = () => {
   const [codDisciplina, setCodDisciplina] = useState<string>('')
   const [nomeDisciplina, setNomeDisciplina] = useState<string>('')
 
-  const { user } = useAuth()
-
   const handleDeleteRequisito = (requisito: string) => {
     setRequisitos(requisitos.filter((i) => i !== requisito))
   }
 
   const handleAbrirVagaMonitoria = async (e: FormEvent) => {
     e.preventDefault()
-    if (user) {
-      const solicitarAberturaForm = {
-        cpf_professor: user?.matricula,
-        codigo_disciplina: codDisciplina,
-        nome_disciplina: nomeDisciplina,
-        pre_requisitos: requisitos,
-      }
-      await MonitoriaController.getInstance().abrirVaga(
-        solicitarAberturaForm,
-        user,
-      )
+    const solicitarAberturaForm = {
+      codigo_disciplina: codDisciplina,
+      nome_disciplina: nomeDisciplina,
+      pre_requisitos: requisitos,
     }
+    await ProfessorController.getInstance().abrirVaga(solicitarAberturaForm)
   }
 
   return (

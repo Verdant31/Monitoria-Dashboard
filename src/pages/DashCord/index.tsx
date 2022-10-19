@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import ListaSolicitacoes from '../../components/ListaSolicitacoes'
 import SideBar from '../../components/SideBar'
+
 import { Container, MainContainer } from './styles'
+
+import data from '../../../solicitacoes.json'
 import Title from '../../components/Title'
-import ModalSolicitacao from '../../components/ModalSolicitacao'
 import { useSolicitacaoModalContext } from '../../contexts/SolicitacaoModalContext'
 import { SolicitacaoMonitor } from '../../utils/types'
 import { useAuth } from '../../contexts/AuthContext'
 import { CoordenadorController } from '../../api/CoordenadorController'
-import Loading from '../../components/Loading'
 
 const DashProf = () => {
   const { isOpen } = useSolicitacaoModalContext()
@@ -27,17 +28,25 @@ const DashProf = () => {
     getSolicitacoes()
   }, [user])
 
+  const updateListaMonitores = (solicitacaoId: string) => {
+    setSolicitacoesMonitores((oldState) =>
+      oldState?.filter((solicitacao) => solicitacao.id !== solicitacaoId),
+    )
+  }
+
   return (
     <>
-      {isOpen && <ModalSolicitacao />}
       <Container isModalOpen={isOpen}>
         <SideBar />
         <MainContainer>
           <Title displayTitle title={'Solicitações de Monitoria'} />
-          {solicitacoesMonitores ? (
-            <ListaSolicitacoes solicitacoes={solicitacoesMonitores} />
+          {data ? (
+            <ListaSolicitacoes
+              updateLista={updateListaMonitores}
+              solicitacoes={solicitacoesMonitores}
+            />
           ) : (
-            <Loading />
+            <h1>Você não tem solicitações no momento.</h1>
           )}
         </MainContainer>
       </Container>

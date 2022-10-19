@@ -6,20 +6,25 @@ interface ListaSolicitacoesProps {
   solicitacoes: SolicitacaoMonitor[] | SolicitacaoAbertura[] | undefined
   title?: string
   abertura?: boolean
+  gridHeight?: string
+  updateLista: (solicitacaoId: string) => void
 }
 
 const ListaSolicitacoes = ({
   solicitacoes,
   title,
   abertura,
+  gridHeight,
+  updateLista,
 }: ListaSolicitacoesProps) => {
   return (
     <Container>
       {title && <GridTitle>{title}</GridTitle>}
-      <GridContainer>
+      <GridContainer height={gridHeight}>
         {solicitacoes?.map((solicitacao, index) => {
           return (
             <CardSolicitacao
+              updateLista={updateLista}
               key={index}
               abertura={abertura}
               solicitacao={solicitacao}
