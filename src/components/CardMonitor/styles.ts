@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export const MonitorCardContainer = styled.div`
   padding: 0.8rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row !important;
   background-color: #418dde;
   border-radius: 5px;
   white-space: nowrap;

@@ -26,7 +26,7 @@ const MeusMonitores = () => {
     async function getMonitores() {
       if (user) {
         await ProfessorController.getInstance()
-          .getMonitores(user)
+          .getMonitores()
           .then((res) => {
             setDisciplinas(res.disciplinas)
           })

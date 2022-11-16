@@ -6,7 +6,6 @@ import {
   Container,
 } from './styles'
 import { Disciplina } from '../../utils/types'
-
 interface ListaMonitoresProps {
   disciplinas: Disciplina[] | undefined
 }
@@ -20,7 +19,11 @@ const ListaMonitores = ({ disciplinas }: ListaMonitoresProps) => {
             <DisciplinaTitulo>{disciplina.nomeDisciplina}</DisciplinaTitulo>
             <MonitoresContainer>
               {disciplina.monitores.map((monitor) => {
-                return <CardMonitor monitor={monitor} key={monitor.id} />
+                return (
+                  <>
+                    <CardMonitor monitor={monitor} key={monitor.id} />
+                  </>
+                )
               })}
             </MonitoresContainer>
           </DisciplinaContainer>

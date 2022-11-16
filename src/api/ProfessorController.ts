@@ -42,4 +42,13 @@ export class ProfessorController {
       })
       .catch((err) => toast.error(err))
   }
+
+  public async removerMonitor(idMonitor: string) {
+    await api
+      .post('/professor/excluimonitor', { id_monitor: idMonitor })
+      .then((res) => {
+        toast.success('Monitor removido com sucesso..')
+      })
+      .catch((err) => toast.error(err))
+  }
 }
