@@ -45,6 +45,7 @@ const DashProf = () => {
         {solicitacoesMonitores && (
           <>
             <ListaSolicitacoes
+              professor={true}
               title="Solicitações de Monitores"
               gridHeight="12.5rem"
               solicitacoes={solicitacoesMonitores}
@@ -55,6 +56,7 @@ const DashProf = () => {
         {solicitacoesAbertura && (
           <ListaSolicitacoes
             abertura
+            professor={true}
             gridHeight="17rem"
             title="Abertura de Monitoria"
             solicitacoes={solicitacoesAbertura}

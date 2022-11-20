@@ -42,6 +42,7 @@ const DashProf = () => {
           <Title displayTitle title={'Solicitações de Monitoria'} />
           {data ? (
             <ListaSolicitacoes
+              professor={false}
               updateLista={updateListaMonitores}
               solicitacoes={solicitacoesMonitores}
             />

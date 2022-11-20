@@ -51,4 +51,13 @@ export class ProfessorController {
       })
       .catch((err) => toast.error(err))
   }
+
+  public async aprovarSolicitacao(solicitacaoId: string) {
+    await api
+      .put('/professor/solicitacoes/aprovar', {
+        solicitacao_id: solicitacaoId,
+      })
+      .then((res) => toast.success(res.data.message))
+      .catch((err) => toast.error(err))
+  }
 }

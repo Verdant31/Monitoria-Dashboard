@@ -22,9 +22,9 @@ export class SolicitacaoController {
       .catch((err) => toast.error(err))
   }
 
-  public async aprovarSolicitacao(solicitacaoId: string) {
+  public async aprovarSolicitacao(solicitacaoId: string, professor: boolean) {
     await api
-      .put('/professor/solicitacoes/aprovar', {
+      .put(`/${professor ? 'professor' : 'coordenador'}/solicitacoes/aprovar`, {
         solicitacao_id: solicitacaoId,
       })
       .then((res) => toast.success(res.data.message))

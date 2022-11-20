@@ -31,16 +31,18 @@ interface ConfirmacaoModalProps {
   solicitacaoId: string
   updateLista: (solicitacaoId: string) => void
   trigger?: ReactNode
+  professor: boolean
 }
 export const ConfirmacaoModal = ({
   solicitacaoId,
   updateLista,
   trigger,
+  professor,
 }: ConfirmacaoModalProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleAprovarSolicitacao = async () => {
     await SolicitacaoController.getInstance()
-      .aprovarSolicitacao(solicitacaoId)
+      .aprovarSolicitacao(solicitacaoId, professor)
       .then(() => {
         updateLista(solicitacaoId)
       })

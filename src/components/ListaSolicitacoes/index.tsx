@@ -8,6 +8,7 @@ interface ListaSolicitacoesProps {
   abertura?: boolean
   gridHeight?: string
   updateLista: (solicitacaoId: string) => void
+  professor: boolean
 }
 
 const ListaSolicitacoes = ({
@@ -16,6 +17,7 @@ const ListaSolicitacoes = ({
   abertura,
   gridHeight,
   updateLista,
+  professor,
 }: ListaSolicitacoesProps) => {
   return (
     <Container>
@@ -24,6 +26,7 @@ const ListaSolicitacoes = ({
         {solicitacoes?.map((solicitacao, index) => {
           return (
             <CardSolicitacao
+              professor={professor}
               updateLista={updateLista}
               key={index}
               abertura={abertura}

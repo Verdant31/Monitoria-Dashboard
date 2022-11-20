@@ -9,12 +9,14 @@ interface CardSolicitacaoProps {
   solicitacao: SolicitacaoMonitor | SolicitacaoAbertura
   abertura: boolean | undefined
   updateLista: (solicitacaoId: string) => void
+  professor: boolean
 }
 
 const CardSolicitacao = ({
   solicitacao,
   abertura = false,
   updateLista,
+  professor,
 }: CardSolicitacaoProps) => {
   return (
     <CardContainer>
@@ -56,6 +58,7 @@ const CardSolicitacao = ({
 
       <ButtonsContainer>
         <ConfirmacaoModal
+          professor={professor}
           updateLista={updateLista}
           solicitacaoId={solicitacao.id}
           trigger={
