@@ -22,12 +22,34 @@ export class SolicitacaoController {
       .catch((err) => toast.error(err))
   }
 
-  public async aprovarSolicitacao(solicitacaoId: string, professor: boolean) {
-    await api
-      .put(`/${professor ? 'professor' : 'coordenador'}/solicitacoes/aprovar`, {
-        solicitacao_id: solicitacaoId,
-      })
-      .then((res) => toast.success(res.data.message))
-      .catch((err) => toast.error(err))
+  public async aprovarSolicitacao(
+    solicitacaoId: string,
+    professor: boolean,
+    horario?: string,
+    dia?: string,
+  ) {
+    if (horario && horario.length > 0 && dia && dia.length > 0) {
+      await api
+        .put(
+          `/${professor ? 'professor' : 'coordenador'}/solicitacoes/aprovar`,
+          {
+            solicitacao_id: solicitacaoId,
+            horario,
+            dia,
+          },
+        )
+        .then((res) => toast.success(res.data.message))
+        .catch((err) => toast.error(err))
+    } else {
+      await api
+        .put(
+          `/${professor ? 'professor' : 'coordenador'}/solicitacoes/aprovar`,
+          {
+            solicitacao_id: solicitacaoId,
+          },
+        )
+        .then((res) => toast.success(res.data.message))
+        .catch((err) => toast.error(err))
+    }
   }
 }

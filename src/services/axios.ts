@@ -4,7 +4,7 @@ let cookies = parseCookies()
 let isRefreshing = false
 let failedRequestsQueue: any = []
 export const api = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: 'https://projeto-monitoria-api.herokuapp.com/',
 })
 
 api.defaults.headers.common.Authorization = `${cookies['monitoria.token']}`

@@ -31,7 +31,7 @@ export const StyledContent = styled(DialogPrimitive.Content, {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '90vw',
-  maxWidth: '450px',
+  maxWidth: '480px',
   maxHeight: '85vh',
   padding: 25,
   '@media (prefers-reduced-motion: no-preference)': {
