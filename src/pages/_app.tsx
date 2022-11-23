@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import AuthContextProvider from '../contexts/AuthContext'
 import { SolicitacaoModalContextProvider } from '../contexts/SolicitacaoModalContext'
-import GlobalStyle from './global'
+import GlobalStyle from '../styles/Global'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 

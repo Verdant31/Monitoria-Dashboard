@@ -5,7 +5,7 @@ import MyButton from '../components/Button'
 import MyInput from '../components/Input'
 import { useAuth } from '../contexts/AuthContext'
 // Styles
-import { Container, FormContainer, LogInContainer } from './home'
+import { Container, FormContainer, LogInContainer } from '../styles/Home'
 
 const Home = () => {
   const { logIn } = useAuth()

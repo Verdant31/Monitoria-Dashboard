@@ -1,8 +1,7 @@
 import AbrirVagaForm from '../../../components/AbrirVagaForm'
 import SideBar from '../../../components/SideBar'
 import Title from '../../../components/Title'
-import { MainContainer } from '../styles'
-import { Container } from './styles'
+import { MainContainer, Container } from '../../../styles/AbrirVaga'
 
 const AbrirVaga = () => {
   return (

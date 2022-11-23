@@ -1,7 +1,11 @@
 import CardAluno from '../../../components/CardAluno'
 import SideBar from '../../../components/SideBar'
 import Title from '../../../components/Title'
-import { Container, GridContainer, MainContainer } from './styles'
+import {
+  Container,
+  GridContainer,
+  MainContainer,
+} from '../../../styles/AlunosPendentes'
 import { useEffect, useState } from 'react'
 import { CoordenadorController } from '../../../api/CoordenadorController'
 import { AlunoPendente } from '../../../@types'

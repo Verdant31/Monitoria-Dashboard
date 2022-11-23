@@ -1,4 +1,4 @@
-import { Container, MainContainer } from './styles'
+import { Container, MainContainer } from '../../styles/DashProf'
 import SideBar from '../../components/SideBar'
 import Title from '../../components/Title'
 import ListaSolicitacoes from '../../components/ListaSolicitacoes'

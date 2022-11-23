@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import ListaSolicitacoes from '../../components/ListaSolicitacoes'
 import SideBar from '../../components/SideBar'
 
-import { Container, MainContainer } from './styles'
+import { Container, MainContainer } from '../../styles/DashCord'
 
 import data from '../../../solicitacoes.json'
 import Title from '../../components/Title'
