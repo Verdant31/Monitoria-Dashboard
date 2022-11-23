@@ -3,10 +3,16 @@ import { parseCookies, setCookie } from 'nookies'
 let cookies = parseCookies()
 let isRefreshing = false
 let failedRequestsQueue: any = []
-export const api = axios.create({
-  baseURL: 'http://localhost:3001/',
-})
 
+const prod = process.env.NODE_ENV === 'production'
+
+const apiUrl = prod
+  ? ` https://projeto-monitoria-api.herokuapp.com/`
+  : 'http://localhost:3000/'
+
+export const api = axios.create({
+  baseURL: apiUrl,
+})
 api.defaults.headers.common.Authorization = `${cookies['monitoria.token']}`
 api.interceptors.response.use(
   (res) => {
