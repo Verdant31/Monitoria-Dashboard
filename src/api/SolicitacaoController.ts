@@ -22,6 +22,15 @@ export class SolicitacaoController {
       .catch((err) => toast.error(err))
   }
 
+  public async aprovarAbertura(solicitacaoId: string) {
+    await api
+      .put('/professor/aberturamonitoria/aprovar', {
+        solicitacao_id: solicitacaoId,
+      })
+      .then((res) => toast.success(res.data.message))
+      .catch((err) => toast.error(err))
+  }
+
   public async aprovarSolicitacao(
     solicitacaoId: string,
     professor: boolean,

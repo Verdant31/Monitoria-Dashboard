@@ -1,6 +1,7 @@
 import { SolicitacaoAbertura, SolicitacaoMonitor } from '../../utils/types'
 import MyButton from '../Button'
 import { ConfirmacaoModal } from '../ConfirmacaoModal'
+import { ConfirmarAbertura } from '../ConfirmarAbertura'
 import InfoCard from '../InfoCard'
 import { SolicitacaoModal } from '../ModalSolicitacao'
 import { ButtonsContainer, CardContainer, InfosContainer } from './styles'
@@ -57,16 +58,29 @@ const CardSolicitacao = ({
       )}
 
       <ButtonsContainer>
-        <ConfirmacaoModal
-          professor={professor}
-          updateLista={updateLista}
-          solicitacaoId={solicitacao.id}
-          trigger={
-            <MyButton textColor="#f2f2f2" bgColor="#2f6195" width="10rem">
-              Aprovar
-            </MyButton>
-          }
-        />
+        {abertura ? (
+          <ConfirmarAbertura
+            professor={professor}
+            updateLista={updateLista}
+            solicitacaoId={solicitacao.id}
+            trigger={
+              <MyButton textColor="#f2f2f2" bgColor="#2f6195" width="10rem">
+                Aprovar
+              </MyButton>
+            }
+          />
+        ) : (
+          <ConfirmacaoModal
+            professor={professor}
+            updateLista={updateLista}
+            solicitacaoId={solicitacao.id}
+            trigger={
+              <MyButton textColor="#f2f2f2" bgColor="#2f6195" width="10rem">
+                Aprovar
+              </MyButton>
+            }
+          />
+        )}
         <SolicitacaoModal
           updateLista={updateLista}
           solicitacaoId={solicitacao.id}
